@@ -20,10 +20,25 @@
 <body>
     <h1>Fellow Grammarians</h1>
     <div class="video-container">
-        <video controls autoplay>
+        <video id="myVideo" controls autoplay playsinline>
             <source src="fellow_grammarians.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
+
+    <script>
+        // JavaScript to ensure video plays with sound
+        window.addEventListener('load', function() {
+            var video = document.getElementById('myVideo');
+            video.muted = false; // Ensure sound is on
+            video.volume = 1.0; // Set volume to maximum (0.0 to 1.0 scale)
+            video.play().then(() => {
+                console.log("Video is playing with sound");
+            }).catch((error) => {
+                console.log("Autoplay with sound blocked: ", error);
+                // Controls remain for manual play if blocked
+            });
+        });
+    </script>
 </body>
 </html>
